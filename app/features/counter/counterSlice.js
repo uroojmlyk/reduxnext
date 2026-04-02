@@ -4,24 +4,30 @@ const initialState = {
   value: 0,
 };
 
-export const counterSlice = createSlice({
+const counterSlice = createSlice({
   name: 'counter',
+
   initialState,
+
   reducers: {
+    // ✅ simple action
     increment: (state) => {
       state.value += 1;
-      console.log('✅ Increment dispatched! New value:', state.value);
     },
+
     decrement: (state) => {
       state.value -= 1;
-      console.log('✅ Decrement dispatched! New value:', state.value);
     },
+
+    // ✅ payload concept
     incrementByAmount: (state, action) => {
       state.value += action.payload;
-      console.log(`✅ Increment by ${action.payload}! New value:`, state.value);
     },
   },
 });
 
+// 👉 actions (commands)
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+
+// 👉 reducer (logic)
 export default counterSlice.reducer;
