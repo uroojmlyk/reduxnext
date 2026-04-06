@@ -1,33 +1,72 @@
-'use client';
+// 'use client';
 
-import { useSelector, useDispatch } from 'react-redux';
-// import { increment, decrement, incrementByAmount } from '../redux/counterSlice';
-import { increment,decrement,incrementByAmount } from './features/counter/counterSlice';
-export default function Home() {
-  const dispatch = useDispatch();
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchPosts } from './features/posts/postsSlice';
+// export default function Page() {
+//   const dispatch = useDispatch();
+//   const { data, status } = useSelector((state) => state.posts);
 
-  // 👉 state read
-  const count = useSelector((state) => state.counter.value);
+//   useEffect(() => {
+//     dispatch(fetchPosts());
+//   }, [dispatch]);
 
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Redux Toolkit Counter</h1>
+//   if (status === 'loading') return <p>Loading...</p>;
 
-      <h2>{count}</h2>
+//   return (
+//     <div>
+//       {data.slice(1,3).map((post) => (
+//         <p key={post.id}>{post.title}</p>
+//       ))}
+//     </div>
+//   );
+// }
 
-      {/* 👉 simple actions */}
-      <button onClick={() => dispatch(increment())}>
-        +1
-      </button>
 
-      <button onClick={() => dispatch(decrement())}>
-        -1
-      </button>
+// 'use client'
+// import { useEffect } from "react"
+// import { useSelector,useDispatch } from "react-redux"
+// import { fetchPosts } from "./features/posts/postsSlice"
+// export default function Page (){
+//   const dispatch=useDispatch();
+//   const {data,status}= useSelector ((state)=> (state.posts));
+//   useEffect( ()=> {
+//     dispatch (fetchPosts())
+//   },[dispatch]);
+//   if (status === 'loading') return <p> Loading...</p>
+//   return <div>
+//     {data.slice (1,3). map((post)=> ( <p key={post.id}>{post.title}</p>) )}
+//   </div>
+// }
+'use client'
+import { useEffect } from "react"
+import { useDispatch,useSelector } from "react-redux"
+import { fetchPosts } from './features/posts/postsSlice';
+export default function page (){
+const dispatch=useDispatch();
+const {data,status}=useSelector ( (state)=> state.posts);
+useEffect (()=> {
 
-      {/* 👉 payload action */}
-      <button onClick={() => dispatch(incrementByAmount(5))}>
-        +5
-      </button>
-    </div>
-  );
+dispatch (fetchPosts());
+},[dispatch])
+if (status==='loading') return <p>loading...</p>
+return <div>
+  {data.slice(1,5).map((posts)=>( <p key={posts.id}> {posts.title}</p>) )}
+</div>
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
